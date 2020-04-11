@@ -7,12 +7,16 @@ function App() {
 
 
   function addTodo(e){
+
     e.preventDefault();
     setToDo([...toDo, writeToDo]);
+    
   }
 
-  function endTodo(index){
-    delete toDo[index];
+  function deleteTodo(toDoindex){
+    
+    const filter = toDo.filter((item, index) => index !== toDoindex)
+    setToDo(filter);
   }
 
   return (
@@ -31,7 +35,7 @@ function App() {
           <input type="checkbox"> 
           </input>
           {todo}
-          <button onClick={endTodo(index)}></button>
+          <button onClick={() =>deleteTodo(index)}></button>
           </div>
         ))}
 
