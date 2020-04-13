@@ -1,22 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import './styles.css'
+
+
+
 function App() {
 
-  const [writeToDo, setWriteToDo] = useState('');
-  const [toDo, setToDo] = useState(['Initia']);
-
+  const [writeToDo, setWriteToDo] = useState([]);
+  const [toDo, setToDo] = useState([]);
 
   function addTodo(e){
-
     e.preventDefault();
-    setToDo([...toDo, writeToDo]);
-    
+    setToDo([...toDo, {text: writeToDo, completed: false}]);
   }
 
-  function deleteTodo(toDoindex){
-    
-    const filter = toDo.filter((item, index) => index !== toDoindex)
+  function deleteTodo(toDoIndex){   
+    const filter = toDo.filter((item, index) => index !== toDoIndex)
     setToDo(filter);
+  }
+
+  function completeTodo(toDoIndex){
+    const setCompleted = toDo;
+    setCompleted[toDoIndex].completed = !setCompleted[toDoIndex].completed;
+    setToDo(setCompleted);
+    console.log(toDo)
   }
 
   return (
@@ -31,11 +37,9 @@ function App() {
       <div>
         <div>
         {toDo.map((todo, index) => (
-          <div>
-          <input type="checkbox"> 
-          </input>
-          {todo}
-          <button onClick={() =>deleteTodo(index)}></button>
+          <div key={index}>
+          <p onClick={() => completeTodo(index)} className="notCompleted_todo">{todo.text}</p>
+          <button onClick={() => deleteTodo(index)}></button>
           </div>
         ))}
 

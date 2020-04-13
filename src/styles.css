@@ -18,3 +18,12 @@ body{
   border: 2px solid ;
 }
 
+
+.completed_todo{
+  font-weight: bold;
+}
+
+
+.notCompleted_todo{
+  font-weight: 100;
+}
