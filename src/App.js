@@ -21,8 +21,7 @@ function App() {
   function completeTodo(toDoIndex){
     const setCompleted = toDo;
     setCompleted[toDoIndex].completed = !setCompleted[toDoIndex].completed;
-    setToDo(setCompleted);
-    console.log(toDo)
+    setToDo([...setCompleted]);
   }
 
   return (
@@ -38,7 +37,8 @@ function App() {
         <div>
         {toDo.map((todo, index) => (
           <div key={index}>
-          <p onClick={() => completeTodo(index)} className="notCompleted_todo">{todo.text}</p>
+          <p onClick={() => completeTodo(index)} 
+          className={toDo[index].completed ? "completed_todo" : "notCompleted_todo"}>{todo.text}</p>
           <button onClick={() => deleteTodo(index)}></button>
           </div>
         ))}
