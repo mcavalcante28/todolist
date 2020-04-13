@@ -20,13 +20,15 @@ function App() {
   }
 
   function completeTodo(toDoIndex){
+    
+
     const setCompleted = toDo;
     setCompleted[toDoIndex].completed = !setCompleted[toDoIndex].completed;
-    setToDo([...setCompleted]);
 
-    const completeds = toDo.filter(item => item.completed === true);
+    const completeds = setCompleted.filter(item => item.completed === true);
     setCompletedList([...completeds]);
   }
+
 
   return (
     <div className="full-container">
@@ -40,15 +42,19 @@ function App() {
       <div>
         <div>
         {toDo.map((todo, index) => (
-          <div key={index}>
-          <p onClick={() => completeTodo(index)} 
-          className={toDo[index].completed ? "completed_todo" : "notCompleted_todo"}>{todo.text}</p>
-          <button onClick={() => deleteTodo(index)}></button>
-          </div>
+          <div> 
+            {!toDo[index].completed ? (
+              <div key={index}>
+              <p onClick={() => completeTodo(index, 1)} 
+              className={"notCompleted_todo"}>{todo.text}</p>
+              <button onClick={() => deleteTodo(index)}></button>
+              </div>
+            ) :null}
+            </div>
         ))}
          {completedList.map((complete, index) => (
-          <div className='completed-container' key={index}>
-          <p onClick={() => completeTodo(index)}>{complete.text}</p>
+          <div key={index} className='completed-container'>
+          <p onClick={() => completeTodo(index, 2)}>{complete.text}</p>
           </div>
         ))}
 
