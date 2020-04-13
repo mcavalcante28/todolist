@@ -14,21 +14,70 @@ body{
   align-items: flex-start;
   justify-content: flex-start;
   border-radius: 30px;
-  flex-direction: row;
+  flex-direction: column;
   border: 2px solid ;
 }
 
-
-.completed_todo{
-  font-weight: bold;
+.full-container form{
+  display: flex;
+  flex-direction: column;
+  background-color: #012E40;
+  width:100%;
+  height: 20%;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 28px;
+  border-top-left-radius: 28px;
 }
 
+.bottom-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #AAB5BF;
+  width: 100%;
+  height:80%;
+  border-bottom-right-radius: 28px;
+  border-bottom-left-radius: 28px;
+}
+
+.todo-list{
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-button{
+  background-color: transparent;
+}
+.todo-label{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.todo-label p{
+
+}
+
+.date{
+  display: none;
+}
+.todo-label:hover p{
+  text-decoration:line-through;
+}
 
 .notCompleted_todo{
-  font-weight: 100;
+  font-weight: lighter;
+}
+.completed-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
-.completed-container{
-  background-color: aqua;
+.completed-container p{
 }
