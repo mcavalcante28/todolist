@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import { FiTrash2 } from 'react-icons/fi';
 import './styles.css'
 
 
 
 function App() {
 
-  const [writeToDo, setWriteToDo] = useState([]);
+  const [writeToDo, setWriteToDo] = useState([localStorage.getItem('todos')]);
   const [toDo, setToDo] = useState([]);
-  const [completedList, setCompletedList] = useState([]);
+  const [completedList, setCompletedList] = useState([localStorage.getItem('completeds')]);
 
   function addTodo(e){
     e.preventDefault();
@@ -20,14 +21,14 @@ function App() {
   }
 
   function completeTodo(toDoIndex){
-    
-
     const setCompleted = toDo;
     setCompleted[toDoIndex].completed = !setCompleted[toDoIndex].completed;
 
     const completeds = setCompleted.filter(item => item.completed === true);
     console.log(toDoIndex)
     setCompletedList([...completeds]);
+    localStorage.setItem('todos', [...toDo])
+    localStorage.setItem('completeds', [...completeds])
   }
 
 
@@ -48,7 +49,9 @@ function App() {
               <div key={index}>
               <p onClick={() => completeTodo(index)} 
               className={"notCompleted_todo"}>{todo.text}</p>
-              <button onClick={() => deleteTodo(index)}></button>
+              <button onClick={() => deleteTodo(index)}>
+              <FiTrash2 size={15} color="#a8a8b3"/>
+              </button>
               </div>
             ) :null}
             </div>
@@ -59,7 +62,9 @@ function App() {
               <div className="completed-container" key={index}>
               <p onClick={() => completeTodo(index)} 
               >{todo.text}</p>
-              <button onClick={() => deleteTodo(index)}></button>
+              <button onClick={() => deleteTodo(index)}>
+              <FiTrash2 size={15} color="#a8a8b3"/>
+              </button>
               </div>
             ) :null}
             </div>
