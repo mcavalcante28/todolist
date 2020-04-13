@@ -27,3 +27,8 @@ body{
 .notCompleted_todo{
   font-weight: 100;
 }
+
+
+.completed-container{
+  background-color: aqua;
+}

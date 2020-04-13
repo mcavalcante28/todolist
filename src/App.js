@@ -7,6 +7,7 @@ function App() {
 
   const [writeToDo, setWriteToDo] = useState([]);
   const [toDo, setToDo] = useState([]);
+  const [completedList, setCompletedList] = useState([]);
 
   function addTodo(e){
     e.preventDefault();
@@ -22,6 +23,9 @@ function App() {
     const setCompleted = toDo;
     setCompleted[toDoIndex].completed = !setCompleted[toDoIndex].completed;
     setToDo([...setCompleted]);
+
+    const completeds = toDo.filter(item => item.completed === true);
+    setCompletedList([...completeds]);
   }
 
   return (
@@ -40,6 +44,11 @@ function App() {
           <p onClick={() => completeTodo(index)} 
           className={toDo[index].completed ? "completed_todo" : "notCompleted_todo"}>{todo.text}</p>
           <button onClick={() => deleteTodo(index)}></button>
+          </div>
+        ))}
+         {completedList.map((complete, index) => (
+          <div className='completed-container' key={index}>
+          <p onClick={() => completeTodo(index)}>{complete.text}</p>
           </div>
         ))}
 
