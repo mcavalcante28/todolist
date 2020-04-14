@@ -45,9 +45,9 @@ function App() {
       </form>
       <div className="bottom-container">
         <div className="todo-list"> 
-        <p> Lista por fazer </p>
+        <p> Fazer </p>
         {toDo.map((todo, index) => (
-          <div> 
+          <div className="itens-container"> 
               <div className="invisible">
                 {todo.date}
               </div>
@@ -55,7 +55,7 @@ function App() {
               <div className="todo-label" key={index}>
                 <Popup
                 trigger={<p onClick={() => completeTodo(index)} 
-                className={"notCompleted_todo"}>{todo.text}</p>}
+                className="notCompleted_todo">{todo.text}<br/></p>}
                 content={<div className="popup-div">
                 <p>Criado em: {todo.date}</p>
                 </div>}
@@ -69,9 +69,9 @@ function App() {
         ))}
         </div>
         <div className="todo-list">
-        <p> Lista completos </p>
+        <p> Feitos </p>
          {toDo.map((todo, index) => (
-          <div> 
+          <div className="todo-label" key={index}> 
             {toDo[index].completed ? (
               <div className="completed-container" key={index}>
               <p onClick={() => completeTodo(index)} 

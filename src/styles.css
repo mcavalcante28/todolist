@@ -90,20 +90,21 @@ body{
   border: 2px solid #455350;
   border-bottom-right-radius: 28px;
   border-bottom-left-radius: 28px;
+  overflow-y: scroll;
 }
 
 .todo-list p{
-  display: flex;
   font-size: 15px;
-  color: #0A0D0D;
+  color: #455350;
   font-weight: bold;
-  justify-content: center;
-  align-items: center;
+  overflow-x:hidden;
 }
 .todo-label p{
+  width:100%;
   font-size: 15px;
   font-family: Roboto;
   font-weight: 300;
+  overflow-wrap: break-word;
 }
 
 .todo-label p:hover{
@@ -115,27 +116,35 @@ body{
 }
 .todo-label{
   display: flex;
+  width:100%;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
+.itens-container{
+  display: flex;
+  width: 100%;
+}
 
 .notCompleted_todo{
   font-weight: lighter;
 }
 .completed-container{
   display: flex;
+  width:100%;
   flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: space-between;
 }
 
 .completed-container p{
-  font-size: 15px;
   text-decoration: line-through;
+  width:100%;
+  font-size: 15px;
   font-family: Roboto;
   font-weight: 300;
+  overflow-wrap: break-word;
 }
 
 .completed-container p:hover{
