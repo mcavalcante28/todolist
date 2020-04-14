@@ -3,6 +3,7 @@
 body{
   font: 400 14px Roboto, sans-serif;
   box-sizing: border-box;
+  background-color: #D9CCBF;
 }
 
 .full-container{ 
@@ -16,24 +17,64 @@ body{
   border-radius: 30px;
   flex-direction: column;
   border: 2px solid ;
+  border-color: #BDA88A;
 }
 
 .full-container form{
   display: flex;
   flex-direction: column;
-  background-color: #012E40;
+  background-color: #BDA88A;
   width:100%;
-  height: 20%;
+  height: 30%;
   align-items: center;
   justify-content: center;
   border-top-right-radius: 28px;
   border-top-left-radius: 28px;
 }
 
+.full-container form p{
+  display: flex;
+  font-size: 20px;
+  color: #0A0D0D;
+  font-weight: bold;
+  border: 2px solid #0A0D0D;
+  border-radius: 30px;
+  padding:10px;
+  width: 30%;
+  justify-content: center;
+  align-items: center; 
+}
+
+.full-container form input{
+  display:flex;
+  width: 60%;
+  border-radius: 30px;
+  text-align: center;
+  color: #0A0D0D;
+  font-weight: bold;
+  background-color: #F2F2F2;
+  margin-bottom: 10px;
+}
+
+.full-container form button{
+  width: 20%;
+  background-color: #9F7E68;
+  color: #F2F2F2;
+  font-weight: bold;
+  border-radius: 5px;
+  transition-duration: 0.2s;
+}
+
+.full-container form button:hover{
+  background-color: #BDA88A;
+  color: #0A0D0D;
+  font-weight: bold;
+}
+
 .bottom-container {
   display: flex;
   flex-direction: row;
-  background-color: #AAB5BF;
+  background-color: #D9CCBF;
   width: 100%;
   height:80%;
   border-bottom-right-radius: 28px;
@@ -59,13 +100,12 @@ body{
 }
 
 .todo-label p{
-
+  font-size: 15px;
+  font-family: Roboto;
+  font-weight: 300;
 }
 
-.date{
-  display: none;
-}
-.todo-label:hover p{
+.todo-label p:hover{
   text-decoration:line-through;
 }
 
@@ -80,4 +120,23 @@ body{
 }
 
 .completed-container p{
+  font-size: 15px;
+  text-decoration: line-through;
+  font-family: Roboto;
+  font-weight: 300;
+}
+
+.completed-container p:hover{
+  text-decoration: none;
+}
+
+.invisible{
+  display:none
+}
+
+.popup-div{
+  background-color: #F2F2F2;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 11px;
 }

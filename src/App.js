@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import './styles.css'
 import {format} from 'date-fns'
+import {Popup} from 'semantic-ui-react'
 
 
 
@@ -14,6 +15,7 @@ function App() {
   function addTodo(e){
     e.preventDefault();
     setToDo([...toDo, {text: writeToDo, completed: false, date: format(new Date(), 'dd.MM.yy')}]);
+    setWriteToDo(['']);
   }
 
   function deleteTodo(toDoIndex){   
@@ -26,17 +28,15 @@ function App() {
     setCompleted[toDoIndex].completed = !setCompleted[toDoIndex].completed;
 
     const completeds = setCompleted.filter(item => item.completed === true);
-    console.log(toDoIndex)
     setCompletedList([...completeds]);
     localStorage.setItem('todos', [...toDo])
     localStorage.setItem('completeds', [...completeds])
   }
 
-
   return (
     <div className="full-container">
       <form onSubmit={addTodo}>
-        <p> To do App </p>
+        <p> To Do App </p>
         <input value={writeToDo} onChange={e => setWriteToDo(e.target.value)}>
         </input>
         <button type='submit'>
@@ -48,10 +48,18 @@ function App() {
         <p> Lista por fazer </p>
         {toDo.map((todo, index) => (
           <div> 
+              <div className="invisible">
+                {todo.date}
+              </div>
             {!toDo[index].completed ? (
               <div className="todo-label" key={index}>
-              <p onClick={() => completeTodo(index)} 
-              className={"notCompleted_todo"}>{todo.text}</p>
+                <Popup
+                trigger={<p onClick={() => completeTodo(index)} 
+                className={"notCompleted_todo"}>{todo.text}</p>}
+                content={<div className="popup-div">
+                <p>Criado em: {todo.date}</p>
+                </div>}
+                />
               <button className="delete-button" onClick={() => deleteTodo(index)}>
               <FiTrash2 size={15} color="#000"/>
               </button>
