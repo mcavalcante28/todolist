@@ -40,7 +40,7 @@ body{
   border: 2px solid #0A0D0D;
   border-radius: 30px;
   padding:10px;
-  width: 30%;
+  width: 70%;
   justify-content: center;
   align-items: center; 
 }
@@ -87,6 +87,27 @@ body{
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  border: 2px solid #455350;
+  border-bottom-right-radius: 28px;
+  border-bottom-left-radius: 28px;
+}
+
+.todo-list p{
+  display: flex;
+  font-size: 15px;
+  color: #0A0D0D;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+.todo-label p{
+  font-size: 15px;
+  font-family: Roboto;
+  font-weight: 300;
+}
+
+.todo-label p:hover{
+  text-decoration:line-through;
 }
 
 .delete-button{
@@ -99,15 +120,6 @@ body{
   align-items: center;
 }
 
-.todo-label p{
-  font-size: 15px;
-  font-family: Roboto;
-  font-weight: 300;
-}
-
-.todo-label p:hover{
-  text-decoration:line-through;
-}
 
 .notCompleted_todo{
   font-weight: lighter;
