@@ -89,7 +89,7 @@ function App() {
                 <FiPenTool size={15} color="#000"/>
                 </button>
               ): (
-                <div>
+                <div className="todo-label">
                 <input value={editedToDo} onChange={e => edittToDo(e.target.value)}/>
                 <button className="delete-button" onClick={() => editTodo(index)}>
                 <FiPenTool size={15} color="#000"/>
