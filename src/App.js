@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { FiTrash2 } from 'react-icons/fi';
+import { FiTrash2, FiPenTool } from 'react-icons/fi';
 import './styles.css'
 import {format} from 'date-fns'
 import {Popup} from 'semantic-ui-react'
@@ -11,10 +11,12 @@ function App() {
   const [writeToDo, setWriteToDo] = useState([]);
   const [toDo, setToDo] = useState([]);
   const [completedList, setCompletedList] = useState([]);
+  const [editedToDo, edittToDo] = useState([]);
+
 
   function addTodo(e){
     e.preventDefault();
-    setToDo([...toDo, {text: writeToDo, completed: false, date: format(new Date(), 'dd.MM.yy')}]);
+    setToDo([...toDo, {text: writeToDo, completed: false, date: format(new Date(), 'dd.MM.yy'), editing: false}]);
     setWriteToDo(['']);
   }
 
@@ -29,9 +31,28 @@ function App() {
 
     const completeds = setCompleted.filter(item => item.completed === true);
     setCompletedList([...completeds]);
-    localStorage.setItem('todos', [...toDo])
-    localStorage.setItem('completeds', [...completeds])
   }
+  function editMode(toDoIndex){
+    const setEdited = toDo;
+
+    setEdited[toDoIndex].editing = !setEdited[toDoIndex].editing;
+
+    const editing = setEdited.filter(item => item.editing === true);
+    setCompletedList([...editing]);
+  }
+
+
+  function editTodo(toDoIndex){
+    const setEdited = toDo;
+
+    setEdited[toDoIndex].text = editedToDo;
+    setEdited[toDoIndex].editing = false;
+
+    const completeds = setEdited.filter(item => item.editing === true);
+    setCompletedList([...completeds]);
+    edittToDo([]);
+  }
+
 
   return (
     <div className="full-container">
@@ -63,6 +84,18 @@ function App() {
               <button className="delete-button" onClick={() => deleteTodo(index)}>
               <FiTrash2 size={15} color="#000"/>
               </button>
+              {!todo.editing ? (
+                <button className="delete-button" onClick={() => editMode(index)}>
+                <FiPenTool size={15} color="#000"/>
+                </button>
+              ): (
+                <div>
+                <input value={editedToDo} onChange={e => edittToDo(e.target.value)}/>
+                <button className="delete-button" onClick={() => editTodo(index)}>
+                <FiPenTool size={15} color="#000"/>
+                </button>
+                </div>
+              )}
               </div>
             ) :null}
             </div>
@@ -76,8 +109,8 @@ function App() {
               <div className="completed-container" key={index}>
               <p onClick={() => completeTodo(index)} 
               >{todo.text}</p> 
-              <button onClick={() => deleteTodo(index)}>
-              <FiTrash2 size={15} color="#a8a8b3"/>
+              <button className="delete-button" onClick={() => deleteTodo(index)}>
+              <FiTrash2 size={15} color="#000"/>
               </button>
               </div>
             ) :null}
